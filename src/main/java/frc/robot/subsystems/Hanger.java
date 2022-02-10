@@ -19,14 +19,18 @@ public class Hanger extends SubsystemBase {
     rightMotor = new Talon(Constants.liftMotorRight);
   }
 
-  public void lift(boolean up){
-    if(up){
+  public void lift(boolean up, boolean stop){
+    if(up && !stop){
       leftMotor.set(.5);
       rightMotor.set(.5);
     }
-    else{
+    if(!up && !stop){
       leftMotor.set(-1);
       rightMotor.set(-1);
+    }
+    if(up && stop){
+      leftMotor.set(0);
+      rightMotor.set(0);
     }
   }
 
