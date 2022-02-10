@@ -7,6 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.Autonomous;
 import frc.robot.commands.DefaultDrive;
 import frc.robot.commands.HangRobot;
 import frc.robot.commands.RunIntake;
@@ -46,27 +47,30 @@ public class RobotContainer {
 
   private final Hanger hanger;
 
+  private final Autonomous auto;
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     driver = new Joystick(0);
     operator = new Joystick(1);
-
-    shoot2ptButton = new JoystickButton(operator, Constants.shoot2ptButton);
-    shoot1ptButton = new JoystickButton(operator, Constants.shoot1ptButton);
-    intakeUpButton = new JoystickButton(operator, Constants.intakeUpButton);
-    intakeDownButton = new JoystickButton(operator, Constants.intakeDownButton);
-    hangerUpButton = new JoystickButton(operator, Constants.hangerUpButton);
-    hangerDownButton = new JoystickButton(operator, Constants.hangerDownButton);
 
     driveTrain = new DriveTrain();
     defaultDrive = new DefaultDrive(driveTrain, driver);
     driveTrain.setDefaultCommand(defaultDrive);
 
     intake = new Intake();
+    intakeUpButton = new JoystickButton(operator, Constants.intakeUpButton);
+    intakeDownButton = new JoystickButton(operator, Constants.intakeDownButton);
 
     shooter = new Shooter();
+    shoot2ptButton = new JoystickButton(operator, Constants.shoot2ptButton);
+    shoot1ptButton = new JoystickButton(operator, Constants.shoot1ptButton);
 
     hanger = new Hanger();
+    hangerUpButton = new JoystickButton(operator, Constants.hangerUpButton);
+    hangerDownButton = new JoystickButton(operator, Constants.hangerDownButton);
+
+    auto = new Autonomous(intake, shooter, driveTrain);
 
     // Configure the button bindings
     configureButtonBindings();
@@ -98,7 +102,7 @@ public class RobotContainer {
   
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return null;
+    return auto;
   }
 
 

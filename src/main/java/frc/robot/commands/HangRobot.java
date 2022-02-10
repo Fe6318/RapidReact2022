@@ -16,8 +16,8 @@ public class HangRobot extends CommandBase {
   public HangRobot(Hanger hanger, boolean up) {
     this.hanger = hanger;
     this.up = up;
-
     // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(hanger);
   }
 
   // Called when the command is initially scheduled.
