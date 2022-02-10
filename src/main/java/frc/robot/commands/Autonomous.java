@@ -27,6 +27,7 @@ public class Autonomous extends CommandBase {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(intake);
     addRequirements(shooter);
+    addRequirements(drive);
   }
 
   // Called when the command is initially scheduled.
@@ -39,13 +40,13 @@ public class Autonomous extends CommandBase {
   @Override
   public void execute() {
     shooter.shootBall(1);
-    timer.delay(2);
+    Timer.delay(2);
     intake.runIntake(.5);
-    timer.delay(2);
+    Timer.delay(2);
     shooter.shootBall(0);
     intake.runIntake(0);
     drive.drive(-.25, 0, 0);
-    timer.delay(4);
+    Timer.delay(4);
   }
 
   // Called once the command ends or is interrupted.
