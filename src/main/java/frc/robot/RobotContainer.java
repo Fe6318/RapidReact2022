@@ -8,9 +8,11 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.DefaultDrive;
+import frc.robot.commands.HangRobot;
 import frc.robot.commands.RunIntake;
 import frc.robot.commands.ShootBall;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Hanger;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -32,6 +34,8 @@ public class RobotContainer {
   private static JoystickButton shoot1ptButton;
   private static JoystickButton intakeUpButton;
   private static JoystickButton intakeDownButton;
+  private static JoystickButton hangerUpButton;
+  private static JoystickButton hangerDownButton;
   
   private final DriveTrain driveTrain;
   private final DefaultDrive defaultDrive;
@@ -39,6 +43,8 @@ public class RobotContainer {
   private final Intake intake;
 
   private final Shooter shooter;
+
+  private final Hanger hanger;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -49,6 +55,8 @@ public class RobotContainer {
     shoot1ptButton = new JoystickButton(operator, Constants.shoot1ptButton);
     intakeUpButton = new JoystickButton(operator, Constants.intakeUpButton);
     intakeDownButton = new JoystickButton(operator, Constants.intakeDownButton);
+    hangerUpButton = new JoystickButton(operator, Constants.hangerUpButton);
+    hangerDownButton = new JoystickButton(operator, Constants.hangerDownButton);
 
     driveTrain = new DriveTrain();
     defaultDrive = new DefaultDrive(driveTrain, driver);
@@ -57,6 +65,8 @@ public class RobotContainer {
     intake = new Intake();
 
     shooter = new Shooter();
+
+    hanger = new Hanger();
 
     // Configure the button bindings
     configureButtonBindings();
@@ -74,6 +84,9 @@ public class RobotContainer {
 
     intakeUpButton.whenHeld(new RunIntake(intake, .5));
     intakeDownButton.whenHeld(new RunIntake(intake, -.5));
+    
+    hangerUpButton.whenHeld(new HangRobot(hanger, true));
+    hangerDownButton.whenHeld(new HangRobot(hanger, false));
   }
 
   /**

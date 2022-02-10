@@ -23,6 +23,9 @@ public final class Constants {
 
     public static final int shooterMotor = 0;
 
+    public static final int liftMotorLeft = 0;
+    public static final int liftMotorRight = 0;
+
     public static final int forwardButton = 0;
     public static final int backButton = 0;
     public static final int zRotation = 0;
@@ -32,4 +35,6 @@ public final class Constants {
     public static final int shoot1ptButton = 0;
     public static final int intakeUpButton = 0;
     public static final int intakeDownButton = 0;
+    public static final int hangerUpButton = 0;
+    public static final int hangerDownButton = 0;
 }
