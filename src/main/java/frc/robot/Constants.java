@@ -21,7 +21,15 @@ public final class Constants {
 
     public static final int intakeMotor = 0;
 
+    public static final int shooterMotor = 0;
+
     public static final int forwardButton = 0;
     public static final int backButton = 0;
     public static final int zRotation = 0;
+
+
+    public static final int shoot2ptButton = 0;
+    public static final int shoot1ptButton = 0;
+    public static final int intakeUpButton = 0;
+    public static final int intakeDownButton = 0;
 }

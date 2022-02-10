@@ -9,8 +9,10 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.DefaultDrive;
 import frc.robot.commands.RunIntake;
+import frc.robot.commands.ShootBall;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -26,27 +28,35 @@ public class RobotContainer {
   private static Joystick driver;
   private static Joystick operator;
 
-  private static JoystickButton operatorA;
-  private static JoystickButton operatorB;
+  private static JoystickButton shoot2ptButton;
+  private static JoystickButton shoot1ptButton;
+  private static JoystickButton intakeUpButton;
+  private static JoystickButton intakeDownButton;
   
   private final DriveTrain driveTrain;
   private final DefaultDrive defaultDrive;
 
   private final Intake intake;
 
+  private final Shooter shooter;
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     driver = new Joystick(0);
     operator = new Joystick(1);
 
-    operatorA = new JoystickButton(operator, 1);
-    operatorB = new JoystickButton(operator, 2);
+    shoot2ptButton = new JoystickButton(operator, Constants.shoot2ptButton);
+    shoot1ptButton = new JoystickButton(operator, Constants.shoot1ptButton);
+    intakeUpButton = new JoystickButton(operator, Constants.intakeUpButton);
+    intakeDownButton = new JoystickButton(operator, Constants.intakeDownButton);
 
     driveTrain = new DriveTrain();
     defaultDrive = new DefaultDrive(driveTrain, driver);
     driveTrain.setDefaultCommand(defaultDrive);
 
     intake = new Intake();
+
+    shooter = new Shooter();
 
     // Configure the button bindings
     configureButtonBindings();
@@ -59,8 +69,11 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    operatorA.whenHeld(new RunIntake(intake, .5));
-    operatorB.whenHeld(new RunIntake(intake, -.5));
+    shoot2ptButton.whenHeld(new ShootBall(shooter, 1));
+    shoot1ptButton.whenHeld(new ShootBall(shooter, .5));
+
+    intakeUpButton.whenHeld(new RunIntake(intake, .5));
+    intakeDownButton.whenHeld(new RunIntake(intake, -.5));
   }
 
   /**
