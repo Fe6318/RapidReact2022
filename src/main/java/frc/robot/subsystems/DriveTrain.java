@@ -39,12 +39,6 @@ public class DriveTrain extends SubsystemBase {
   }
 
   public void drive(double x, double x2, double z){
-    /*if(x == 0 && x2 > 0){
-      drive.arcadeDrive(-x2, z);
-    }
-    else{
-      drive.arcadeDrive(x, z);
-    }*/
     drive.arcadeDrive(x - x2, z);
   }
 

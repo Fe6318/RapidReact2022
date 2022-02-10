@@ -14,13 +14,14 @@ package frc.robot;
  */
 public final class Constants {
 
-    public static final int frontLeftMotor = 1;
-    public static final int backLeftMotor = 2;
-    public static final int frontRightMotor = 3;
-    public static final int backRightMotor = 4;
+    public static final int frontLeftMotor = 0;
+    public static final int backLeftMotor = 0;
+    public static final int frontRightMotor = 0;
+    public static final int backRightMotor = 0;
+
+    public static final int intakeMotor = 0;
 
     public static final int forwardButton = 0;
     public static final int backButton = 0;
     public static final int zRotation = 0;
-
 }
