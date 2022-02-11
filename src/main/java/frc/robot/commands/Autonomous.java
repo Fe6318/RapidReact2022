@@ -48,6 +48,7 @@ public class Autonomous extends CommandBase {
     drive.drive(-.25, 0, 0);
     Timer.delay(4);
     drive.drive(0, 0, 0);
+    Timer.delay(8);
   }
 
   // Called once the command ends or is interrupted.
@@ -62,7 +63,7 @@ public class Autonomous extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(timer.get() > .5){
+    if(timer.get() > 15){
       return true;
     }
     else return false;
