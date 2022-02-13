@@ -7,7 +7,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.Autonomous;
+import frc.robot.commands.AutoDrive;
+import frc.robot.commands.AutoIntake;
+import frc.robot.commands.AutoShoot;
 import frc.robot.commands.DefaultDrive;
 import frc.robot.commands.HangRobot;
 import frc.robot.commands.RunIntake;
@@ -17,6 +19,8 @@ import frc.robot.subsystems.Hanger;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
@@ -47,7 +51,11 @@ public class RobotContainer {
 
   private final Hanger hanger;
 
-  private final Autonomous auto;
+  private final AutoDrive autoDrive;
+  private final AutoIntake autoIntake;
+  private final AutoShoot autoShoot;
+  private final ParallelCommandGroup first;
+  private final SequentialCommandGroup auto;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -70,7 +78,11 @@ public class RobotContainer {
     hangerUpButton = new JoystickButton(operator, Constants.hangerUpButton);
     hangerDownButton = new JoystickButton(operator, Constants.hangerDownButton);
 
-    auto = new Autonomous(intake, shooter, driveTrain);
+    autoDrive = new AutoDrive(driveTrain);
+    autoIntake = new AutoIntake(intake);
+    autoShoot = new AutoShoot(shooter);
+    first = new ParallelCommandGroup(autoShoot, autoIntake);
+    auto = new SequentialCommandGroup(first, autoDrive);
 
     // Configure the button bindings
     configureButtonBindings();
@@ -101,7 +113,6 @@ public class RobotContainer {
   
   
   public Command getAutonomousCommand() {
-    // An ExampleCommand will run in autonomous
     return auto;
   }
 

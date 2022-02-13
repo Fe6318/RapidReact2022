@@ -6,28 +6,21 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.DriveTrain;
-import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
 
-public class Autonomous extends CommandBase {
-  private Intake intake;
-  private Shooter shooter;
-  private DriveTrain drive;
-  private Timer timer;
+public class AutoShoot extends CommandBase {
+
+  Shooter shooter;
+  Timer timer;
 
   /** Creates a new AutoShoot. */
-  public Autonomous(Intake intake, Shooter shooter, DriveTrain drive) {
+  public AutoShoot(Shooter shooter) {
 
-    this.intake = intake;
     this.shooter = shooter;
-    this.drive = drive;
     timer = new Timer();
 
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(intake);
     addRequirements(shooter);
-    addRequirements(drive);
   }
 
   // Called when the command is initially scheduled.
@@ -40,30 +33,18 @@ public class Autonomous extends CommandBase {
   @Override
   public void execute() {
     shooter.shootBall(1);
-    Timer.delay(2);
-    intake.runIntake(.5);
-    Timer.delay(2);
-    shooter.shootBall(0);
-    intake.runIntake(0);
-    drive.drive(-.25, 0, 0);
-    Timer.delay(4);
-    drive.drive(0, 0, 0);
-    Timer.delay(8);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    timer.stop();
     shooter.shootBall(0);
-    intake.runIntake(0);
-    drive.drive(0, 0, 0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(timer.get() > 15){
+    if(timer.get() > 3){
       return true;
     }
     else return false;
