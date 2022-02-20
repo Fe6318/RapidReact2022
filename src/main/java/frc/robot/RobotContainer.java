@@ -35,6 +35,7 @@ public class RobotContainer {
   private static Joystick driver;
   private static Joystick operator;
 
+  private static JoystickButton driveForward;
   private static JoystickButton shoot2ptButton;
   private static JoystickButton shoot1ptButton;
   private static JoystickButton intakeUpButton;

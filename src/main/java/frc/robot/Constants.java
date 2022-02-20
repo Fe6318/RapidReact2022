@@ -14,27 +14,27 @@ package frc.robot;
  */
 public final class Constants {
 
-    public static final int frontLeftMotor = 3;
-    public static final int backLeftMotor = 2;
+    public static final int frontLeftMotor = 0;
+    public static final int backLeftMotor = 0;
     public static final int frontRightMotor = 0;
-    public static final int backRightMotor = 1;
+    public static final int backRightMotor = 0;
 
-    public static final int intakeMotor = 14;
+    public static final int intakeMotor = 0;
 
-    public static final int shooterMotor = 15;
+    public static final int shooterMotor = 0;
 
-    public static final int liftMotorLeft = 12;
-    public static final int liftMotorRight = 13;
+    public static final int liftMotorLeft = 0;
+    public static final int liftMotorRight = 0;
 
-    public static final int forwardButton = 0;
-    public static final int backButton = 0;
+    public static final int forwardButton = 3;
+    public static final int backButton = 2;
     public static final int zRotation = 0;
 
 
-    public static final int shoot2ptButton = 0;
-    public static final int shoot1ptButton = 0;
-    public static final int intakeUpButton = 0;
-    public static final int intakeDownButton = 0;
-    public static final int hangerUpButton = 0;
-    public static final int hangerDownButton = 0;
+    public static final int shoot2ptButton = 1;
+    public static final int shoot1ptButton = 5;
+    public static final int intakeUpButton = 11;
+    public static final int intakeDownButton = 9;
+    public static final int hangerUpButton = 7;
+    public static final int hangerDownButton = 3;
 }

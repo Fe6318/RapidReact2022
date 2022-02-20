@@ -4,17 +4,18 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.motorcontrol.Talon;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Shooter extends SubsystemBase {
   
-  private Talon motor;
+  private WPI_VictorSPX motor;
 
   /** Creates a new Shooter. */
   public Shooter() {
-    motor = new Talon(Constants.shooterMotor);
+    motor = new WPI_VictorSPX(Constants.shooterMotor);
   }
 
   public void shootBall(double speed){

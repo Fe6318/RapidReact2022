@@ -4,19 +4,20 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.motorcontrol.Talon;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Hanger extends SubsystemBase {
 
-  public Talon leftMotor;
-  public Talon rightMotor;
+  public WPI_VictorSPX leftMotor;
+  public WPI_VictorSPX rightMotor;
 
   /** Creates a new Hanger. */
   public Hanger() {
-    leftMotor = new Talon(Constants.liftMotorLeft);
-    rightMotor = new Talon(Constants.liftMotorRight);
+    leftMotor = new WPI_VictorSPX(Constants.liftMotorLeft);
+    rightMotor = new WPI_VictorSPX(Constants.liftMotorRight);
   }
 
   public void lift(boolean up, boolean stop){

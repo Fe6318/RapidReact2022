@@ -4,17 +4,18 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.motorcontrol.Talon;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Intake extends SubsystemBase {
 
-  private Talon motor;
+  private WPI_VictorSPX motor;
 
   /** Creates a new Inake. */
   public Intake() {
-    motor = new Talon(Constants.intakeMotor);
+    motor = new WPI_VictorSPX(Constants.intakeMotor);
   }
 
   public void runIntake(double speed){
