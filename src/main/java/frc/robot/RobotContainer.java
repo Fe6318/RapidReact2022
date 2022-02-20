@@ -35,7 +35,6 @@ public class RobotContainer {
   private static Joystick driver;
   private static Joystick operator;
 
-  private static JoystickButton driveForward;
   private static JoystickButton shoot2ptButton;
   private static JoystickButton shoot1ptButton;
   private static JoystickButton intakeUpButton;
@@ -55,7 +54,7 @@ public class RobotContainer {
   private final AutoDrive autoDrive;
   private final AutoIntake autoIntake;
   private final AutoShoot autoShoot;
-  private final ParallelCommandGroup first;
+  private final ParallelCommandGroup shootAndIntake;
   private final SequentialCommandGroup auto;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -82,8 +81,8 @@ public class RobotContainer {
     autoDrive = new AutoDrive(driveTrain);
     autoIntake = new AutoIntake(intake);
     autoShoot = new AutoShoot(shooter);
-    first = new ParallelCommandGroup(autoShoot, autoIntake);
-    auto = new SequentialCommandGroup(first, autoDrive);
+    shootAndIntake = new ParallelCommandGroup(autoShoot, autoIntake);
+    auto = new SequentialCommandGroup(shootAndIntake, autoDrive);
 
     // Configure the button bindings
     configureButtonBindings();

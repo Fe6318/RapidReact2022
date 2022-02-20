@@ -38,8 +38,8 @@ public class DriveTrain extends SubsystemBase {
     drive = new DifferentialDrive(left, right);
   }
 
-  public void drive(double x, double x2, double z){
-    drive.arcadeDrive(x - x2, z);
+  public void drive(double x, double z){
+    drive.arcadeDrive(z, x);
   }
 
   @Override

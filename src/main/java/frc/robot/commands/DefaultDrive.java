@@ -13,7 +13,6 @@ public class DefaultDrive extends CommandBase {
 
   private final DriveTrain driveTrain;
   private Joystick driver;
-  private double x, x2, z;
 
   /** Creates a new DefaultDrive. */
   public DefaultDrive(DriveTrain driveTrain, Joystick driver) {
@@ -30,15 +29,16 @@ public class DefaultDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    x = driver.getRawAxis(Constants.forwardButton);
-    x2 = driver.getRawAxis(Constants.backButton);
-    z = driver.getRawAxis(Constants.zRotation);
-    driveTrain.drive(x, x2, z);
+    double x = driver.getRawAxis(Constants.forwardButton);
+    double xReverse = driver.getRawAxis(Constants.backButton);
+    double z = driver.getRawAxis(Constants.zRotation);
+    driveTrain.drive(x - xReverse, z);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    driveTrain.drive(0, 0);
   }
 
   // Returns true when the command should end.
