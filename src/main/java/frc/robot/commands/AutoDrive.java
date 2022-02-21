@@ -33,7 +33,7 @@ public class AutoDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    drive.drive(-.25, 0);
+    drive.drive(0, -.35);
   }
 
   // Called once the command ends or is interrupted.

@@ -20,6 +20,16 @@
         "header": {
           "open": true
         }
+      },
+      "Victor SPX[5]": {
+        "header": {
+          "open": true
+        }
+      },
+      "Victor SPX[6]": {
+        "header": {
+          "open": true
+        }
       }
     }
   },
