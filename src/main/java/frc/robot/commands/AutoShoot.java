@@ -45,7 +45,7 @@ public class AutoShoot extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(timer.get() > 3){
+    if(timer.get() > 4){
       return true;
     }
     else return false;
