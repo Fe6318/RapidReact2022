@@ -98,8 +98,8 @@ public class RobotContainer {
     shoot2ptButton.whenHeld(new ShootBall(shooter, 1));
     shoot1ptButton.whenHeld(new ShootBall(shooter, .5));
 
-    intakeUpButton.whenHeld(new RunIntake(intake, .5));
-    intakeDownButton.whenHeld(new RunIntake(intake, -.5));
+    intakeUpButton.whenHeld(new RunIntake(intake, .35));
+    intakeDownButton.whenHeld(new RunIntake(intake, -.35));
     
     hangerUpButton.whenHeld(new HangRobot(hanger, true));
     hangerDownButton.whenHeld(new HangRobot(hanger, false));

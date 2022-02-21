@@ -32,9 +32,9 @@ public final class Constants {
 
 
     public static final int shoot2ptButton = 1;
-    public static final int shoot1ptButton = 5;
-    public static final int intakeUpButton = 11;
-    public static final int intakeDownButton = 9;
-    public static final int hangerUpButton = 7;
-    public static final int hangerDownButton = 3;
+    public static final int shoot1ptButton = 3;
+    public static final int intakeUpButton = 6;
+    public static final int intakeDownButton = 5;
+    public static final int hangerUpButton = 99;
+    public static final int hangerDownButton = 99;
 }
