@@ -20,19 +20,9 @@ public class Hanger extends SubsystemBase {
     rightMotor = new WPI_VictorSPX(Constants.liftMotorRight);
   }
 
-  public void lift(boolean up, boolean stop){
-    if(up && !stop){
-      leftMotor.set(.5);
-      rightMotor.set(.5);
-    }
-    if(!up && !stop){
-      leftMotor.set(-1);
-      rightMotor.set(-1);
-    }
-    if(up && stop){
-      leftMotor.set(0);
-      rightMotor.set(0);
-    }
+  public void lift(double speed){
+    leftMotor.set(speed);
+    rightMotor.set(speed);
   }
 
   @Override

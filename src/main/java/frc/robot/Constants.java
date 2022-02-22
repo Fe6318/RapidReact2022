@@ -35,6 +35,6 @@ public final class Constants {
     public static final int shoot1ptButton = 3;
     public static final int intakeUpButton = 6;
     public static final int intakeDownButton = 5;
-    public static final int hangerUpButton = 99;
-    public static final int hangerDownButton = 99;
+    public static final int hangerUpButton = 8;
+    public static final int hangerDownButton = 7;
 }

@@ -10,12 +10,12 @@ import frc.robot.subsystems.Hanger;
 public class HangRobot extends CommandBase {
 
   public Hanger hanger;
-  public boolean up;
+  public double speed;
 
   /** Creates a new HangRobot. */
-  public HangRobot(Hanger hanger, boolean up) {
+  public HangRobot(Hanger hanger, double speed) {
     this.hanger = hanger;
-    this.up = up;
+    this.speed = speed;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(hanger);
   }
@@ -27,13 +27,13 @@ public class HangRobot extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    hanger.lift(up, false);
+    hanger.lift(speed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    hanger.lift(up, true);
+    hanger.lift(0);
   }
 
   // Returns true when the command should end.

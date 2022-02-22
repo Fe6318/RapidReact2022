@@ -6,7 +6,6 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.AutoDrive;
 import frc.robot.commands.AutoIntake;
 import frc.robot.commands.AutoShoot;
@@ -101,8 +100,8 @@ public class RobotContainer {
     intakeUpButton.whenHeld(new RunIntake(intake, .35));
     intakeDownButton.whenHeld(new RunIntake(intake, -.35));
     
-    hangerUpButton.whenHeld(new HangRobot(hanger, true));
-    hangerDownButton.whenHeld(new HangRobot(hanger, false));
+    hangerUpButton.whenHeld(new HangRobot(hanger, -1));
+    hangerDownButton.whenHeld(new HangRobot(hanger, 1));
   }
 
   /**
