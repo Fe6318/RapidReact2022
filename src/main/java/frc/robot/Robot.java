@@ -4,7 +4,9 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
@@ -28,6 +30,7 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+    CameraServer.startAutomaticCapture();
   }
 
   /**
@@ -43,6 +46,14 @@ public class Robot extends TimedRobot {
     // commands, running already-scheduled commands, removing finished or interrupted commands,
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
+
+    //Test, figure out, and learn smart dashboard
+
+    SmartDashboard.putNumber("2pt shot speed", 1);
+    SmartDashboard.putNumber("1pt shot speed", .5);
+    SmartDashboard.putNumber("Full drive Speed forward", 1);
+    SmartDashboard.putNumber("Full drive Speed backwards", -1);
+
     CommandScheduler.getInstance().run();
   }
 

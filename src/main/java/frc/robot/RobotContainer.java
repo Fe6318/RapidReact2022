@@ -7,6 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.commands.AutoDrive;
+import frc.robot.commands.AutoHang;
 import frc.robot.commands.AutoIntake;
 import frc.robot.commands.AutoShoot;
 import frc.robot.commands.DefaultDrive;
@@ -97,11 +98,14 @@ public class RobotContainer {
     shoot2ptButton.whenHeld(new ShootBall(shooter, 1));
     shoot1ptButton.whenHeld(new ShootBall(shooter, .5));
 
-    intakeUpButton.whenHeld(new RunIntake(intake, .35));
-    intakeDownButton.whenHeld(new RunIntake(intake, -.35));
+    intakeUpButton.whenHeld(new RunIntake(intake, .65));
+    intakeDownButton.whenHeld(new RunIntake(intake, -.65));
     
-    hangerUpButton.whenHeld(new HangRobot(hanger, -1));
+    //hangerUpButton.whenHeld(new HangRobot(hanger, -1));
     hangerDownButton.whenHeld(new HangRobot(hanger, 1));
+
+    hangerUpButton.whenPressed(new AutoHang(hanger, -1, 12));
+    //hangerDownButton.whenPressed(new AutoHang(hanger, 1, 11));
   }
 
   /**
@@ -109,8 +113,6 @@ public class RobotContainer {
    *
    * @return the command to run in autonomous
    */
-  
-  
   public Command getAutonomousCommand() {
     return auto;
   }
