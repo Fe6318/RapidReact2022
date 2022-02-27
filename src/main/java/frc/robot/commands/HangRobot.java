@@ -4,18 +4,20 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.subsystems.Hanger;
 
 public class HangRobot extends CommandBase {
 
   public Hanger hanger;
-  public double speed;
+  public Joystick joystick;
 
   /** Creates a new HangRobot. */
-  public HangRobot(Hanger hanger, double speed) {
+  public HangRobot(Hanger hanger, Joystick joystick) {
     this.hanger = hanger;
-    this.speed = speed;
+    this.joystick = joystick;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(hanger);
   }
@@ -27,7 +29,9 @@ public class HangRobot extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    hanger.lift(speed);
+    double up = joystick.getRawAxis(Constants.forwardButton);
+    double down = joystick.getRawAxis(Constants.backButton);
+    hanger.lift(up - down);
   }
 
   // Called once the command ends or is interrupted.

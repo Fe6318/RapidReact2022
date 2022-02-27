@@ -45,7 +45,7 @@ public class AutoIntake extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(timer.get() > 2){
+    if(timer.get() > 1){
       return true;
     }
     else return false;

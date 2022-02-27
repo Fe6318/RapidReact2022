@@ -50,10 +50,11 @@ public class RobotContainer {
   private final Shooter shooter;
 
   private final Hanger hanger;
+  private final HangRobot hangRobot;
 
-  private final AutoDrive autoDrive;
+  private final AutoDrive autoDrive1, autoDrive2;
   private final AutoIntake autoIntake;
-  private final AutoShoot autoShoot;
+  private final AutoShoot autoShoot1, autoShoot2;
   private final ParallelCommandGroup shootAndIntake;
   private final SequentialCommandGroup auto;
 
@@ -78,11 +79,17 @@ public class RobotContainer {
     hangerUpButton = new JoystickButton(operator, Constants.hangerUpButton);
     hangerDownButton = new JoystickButton(operator, Constants.hangerDownButton);
 
-    autoDrive = new AutoDrive(driveTrain);
+    hangRobot = new HangRobot(hanger, operator);
+    hanger.setDefaultCommand(hangRobot);
+
+
+    autoDrive1 = new AutoDrive(driveTrain, -.5, 0);
+    autoDrive2 = new AutoDrive(driveTrain, 0, .5);
     autoIntake = new AutoIntake(intake);
-    autoShoot = new AutoShoot(shooter);
-    shootAndIntake = new ParallelCommandGroup(autoShoot, autoIntake);
-    auto = new SequentialCommandGroup(shootAndIntake, autoDrive);
+    autoShoot1 = new AutoShoot(shooter);
+    autoShoot2 = new AutoShoot(shooter);
+    shootAndIntake = new ParallelCommandGroup(autoShoot2, autoIntake);
+    auto = new SequentialCommandGroup(autoShoot1, shootAndIntake, autoDrive1, autoDrive2);
 
     // Configure the button bindings
     configureButtonBindings();
@@ -98,14 +105,14 @@ public class RobotContainer {
     shoot2ptButton.whenHeld(new ShootBall(shooter, 1));
     shoot1ptButton.whenHeld(new ShootBall(shooter, .5));
 
-    intakeUpButton.whenHeld(new RunIntake(intake, .65));
-    intakeDownButton.whenHeld(new RunIntake(intake, -.65));
+    intakeUpButton.whenHeld(new RunIntake(intake, .4));
+    intakeDownButton.whenHeld(new RunIntake(intake, -.4));
     
     //hangerUpButton.whenHeld(new HangRobot(hanger, -1));
-    hangerDownButton.whenHeld(new HangRobot(hanger, 1));
+    //hangerDownButton.whenHeld(new HangRobot(hanger, 1));
 
     hangerUpButton.whenPressed(new AutoHang(hanger, -1, 12));
-    //hangerDownButton.whenPressed(new AutoHang(hanger, 1, 11));
+    hangerDownButton.whenPressed(new AutoHang(hanger, 1, 11));
   }
 
   /**

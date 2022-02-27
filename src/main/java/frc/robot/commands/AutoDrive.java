@@ -10,14 +10,17 @@ import frc.robot.subsystems.DriveTrain;
 
 public class AutoDrive extends CommandBase {
 
-  DriveTrain drive;
-  Timer timer;
+  private DriveTrain drive;
+  private Timer timer;
+  private double x, z;
 
   /** Creates a new AutoDrive. */
-  public AutoDrive(DriveTrain drive) {
+  public AutoDrive(DriveTrain drive, double x, double z) {
 
     this.drive = drive;
     timer = new Timer();
+    this.x = x;
+    this.z = z;
 
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(drive);
@@ -33,7 +36,7 @@ public class AutoDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    drive.drive(0, -.35);
+    drive.drive(x, z);
   }
 
   // Called once the command ends or is interrupted.
