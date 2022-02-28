@@ -12,15 +12,16 @@ public class AutoDrive extends CommandBase {
 
   private DriveTrain drive;
   private Timer timer;
-  private double x, z;
+  private double x, z, time;
 
   /** Creates a new AutoDrive. */
-  public AutoDrive(DriveTrain drive, double x, double z) {
+  public AutoDrive(DriveTrain drive, double x, double z, double time) {
 
     this.drive = drive;
     timer = new Timer();
     this.x = x;
     this.z = z;
+    this.time = time;
 
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(drive);
@@ -48,7 +49,7 @@ public class AutoDrive extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(timer.get() > 4){
+    if(timer.get() > time){
       return true;
     }
     else return false;

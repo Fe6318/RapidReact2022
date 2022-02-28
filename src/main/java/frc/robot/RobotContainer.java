@@ -52,7 +52,7 @@ public class RobotContainer {
   private final Hanger hanger;
   private final HangRobot hangRobot;
 
-  private final AutoDrive autoDrive1, autoDrive2;
+  private final AutoDrive autoDrive1, autoDrive2, autoDrive3, autoDrive4, autoDrive5, autoDrive6, autoDrive7, autoDrive8, autoDrive9;
   private final AutoIntake autoIntake;
   private final AutoShoot autoShoot1, autoShoot2;
   private final ParallelCommandGroup shootAndIntake;
@@ -83,13 +83,21 @@ public class RobotContainer {
     hanger.setDefaultCommand(hangRobot);
 
 
-    autoDrive1 = new AutoDrive(driveTrain, -.5, 0);
-    autoDrive2 = new AutoDrive(driveTrain, 0, .5);
+    autoDrive1 = new AutoDrive(driveTrain, -.5, 0, 4);
+    autoDrive2 = new AutoDrive(driveTrain, 0, .5, 2.5);
+    autoDrive3 = new AutoDrive(driveTrain, .5, 0, .5);
+    autoDrive4 = new AutoDrive(driveTrain, -.5, 0, .5);
+    autoDrive5 = new AutoDrive(driveTrain, 0, -.5, .5);
+    autoDrive6 = new AutoDrive(driveTrain, 0, .5, .1);     
+    autoDrive7 = new AutoDrive(driveTrain, 0, -.5, .5);
+    autoDrive8 = new AutoDrive(driveTrain, .5, 0, .5); 
+    autoDrive9 = new AutoDrive(driveTrain, -.5, 0, .5);      
+
     autoIntake = new AutoIntake(intake);
     autoShoot1 = new AutoShoot(shooter);
     autoShoot2 = new AutoShoot(shooter);
     shootAndIntake = new ParallelCommandGroup(autoShoot2, autoIntake);
-    auto = new SequentialCommandGroup(autoShoot1, shootAndIntake, autoDrive1, autoDrive2);
+    auto = new SequentialCommandGroup(autoShoot1, shootAndIntake, autoDrive1, autoDrive2, autoDrive3, autoDrive4, autoDrive5, autoDrive6, autoDrive7, autoDrive8, autoDrive9);
 
     // Configure the button bindings
     configureButtonBindings();
@@ -107,9 +115,6 @@ public class RobotContainer {
 
     intakeUpButton.whenHeld(new RunIntake(intake, .4));
     intakeDownButton.whenHeld(new RunIntake(intake, -.4));
-    
-    //hangerUpButton.whenHeld(new HangRobot(hanger, -1));
-    //hangerDownButton.whenHeld(new HangRobot(hanger, 1));
 
     hangerUpButton.whenPressed(new AutoHang(hanger, -1, 12));
     hangerDownButton.whenPressed(new AutoHang(hanger, 1, 11));
