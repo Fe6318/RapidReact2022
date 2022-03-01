@@ -33,7 +33,7 @@ public class AutoShoot extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    shooter.shootBall(1);
+    shooter.shootBall(.9);
   }
 
   // Called once the command ends or is interrupted.
